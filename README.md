@@ -1,0 +1,1 @@
+# Trigger-in-Database-in-SQL-SERVER-MANAGEMENT-STDIO
