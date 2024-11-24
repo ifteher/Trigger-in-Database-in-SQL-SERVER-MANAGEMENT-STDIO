@@ -1,0 +1,26 @@
+A trigger in SQL Server is a special type of stored procedure that automatically executes when certain events occur on a specified table or view. These events could be INSERT, UPDATE, or DELETE. Triggers are commonly used for enforcing business rules, auditing changes, or maintaining referential integrity.
+(এসকিউএল সার্ভারে একটি ট্রিগার হল একটি বিশেষ ধরনের সংরক্ষিত পদ্ধতি যা নির্দিষ্ট টেবিল বা দৃশ্যে কিছু ঘটনা ঘটলে স্বয়ংক্রিয়ভাবে কার্যকর হয়। এই ইভেন্টগুলি সন্নিবেশ করা, আপডেট করা বা মুছে ফেলা হতে পারে৷ ট্রিগারগুলি সাধারণত ব্যবসায়িক নিয়ম প্রয়োগ, অডিট পরিবর্তন বা রেফারেন্সিয়াল অখণ্ডতা বজায় রাখার জন্য ব্যবহৃত হয়।)
+
+How to Create a Trigger:
+1)Choose the Database:
+Use the USE statement to specify the database.
+
+2)Define the Trigger:
+A trigger is associated with a specific table and executes when the specified event occurs (AFTER or INSTEAD OF INSERT, UPDATE, or DELETE).
+
+3)Insert Trigger
+This trigger logs the details of inserted rows into the InsertLog table.
+CREATE TRIGGER trgAfterInsert
+ON Employee
+AFTER INSERT
+AS
+BEGIN
+    -- Log inserted records
+    INSERT INTO InsertLog (EmpID, EmpName)
+    SELECT EmpID, EmpName
+    FROM INSERTED;
+END;
+GO
+
+4)Delete Trigger
+This trigger logs the details of deleted rows into the DeleteLog table.
